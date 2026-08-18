@@ -7,8 +7,14 @@ interface User {
   age: number;
 }
 
+interface RenderFunctionParameters {
+  user: User;
+  handleSubmit: VoidFunction;
+  clearForm: VoidFunction;
+}
+
 interface Props {
-  render: (props: { user: User; handleSubmit: VoidFunction; clearForm: VoidFunction }) => JSX.Element;
+  render: (parameters: RenderFunctionParameters) => JSX.Element;
 }
 
 function Container({ render }: Props) {
