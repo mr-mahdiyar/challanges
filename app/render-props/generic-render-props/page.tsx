@@ -40,17 +40,17 @@ function Container({ render, visibility }: ContainerProps<RenderParameters, Prop
   return render({ user, handleSubmit, clearForm });
 }
 
-export default function Presentation(props: Props) {
+export default function Presentation(containerProps: Props) {
   return (
     <Container
-      {...props}
-      render={(props) => (
+      {...containerProps}
+      render={({ clearForm, handleSubmit, user: { age, name } }) => (
         <div>
-          <h1>user name: {props.user.name}</h1>
-          <h2>age: {props.user.age}</h2>
+          <h1>user name: {name}</h1>
+          <h2>age: {age}</h2>
           <div className="flex gap-x-3">
-            <button onClick={props.handleSubmit}>submit</button>
-            <button onClick={props.clearForm}>clear</button>
+            <button onClick={handleSubmit}>submit</button>
+            <button onClick={clearForm}>clear</button>
           </div>
         </div>
       )}
